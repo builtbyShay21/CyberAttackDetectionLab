@@ -1,21 +1,14 @@
 # Cyber Attack Detection & Incident Response Lab
 
-A cybersecurity portfolio project demonstrating practical experience with web application exploitation, network security monitoring, digital forensics, and incident response.
+A controlled security lab demonstrating SQL injection analysis, Suricata IDS detection, Wireshark traffic investigation, Apache log correlation, Autopsy forensics, MITRE ATT&CK mapping, and incident-response planning.
 
-**Core Technologies & Concepts Demonstrated:**
-- **DVWA** (Controlled SQL injection testing)
-- **Suricata IDS** (Detection engineering)
-- **Wireshark** (Network traffic analysis)
-- **Apache Logs** (Server log analysis)
-- **Autopsy** (Digital forensics & evidence correlation)
-- **MITRE ATT&CK** (TTP mapping)
-- **Incident Response** (NIST-aligned planning)
+**Core Technologies:** DVWA, Suricata, Wireshark, Apache Logs, Autopsy.
 
 ## Project Objective
 
-The objective of this project is to simulate a web application compromise (SQL injection) in an isolated environment, and subsequently perform a comprehensive technical investigation to detect, analyze, and respond to the incident. 
+This project demonstrates how a controlled SQL injection scenario can be detected, investigated, correlated across multiple evidence sources, mapped to ATT&CK concepts, and translated into an incident-response workflow.
 
-*Note: This repository contains reconstructed technical documentation and evidence originating from an isolated, controlled lab environment. The theoretical case study for the threat model was based on the 2023 MOVEit Transfer breach, but this lab specifically focuses on demonstrating fundamental concepts against DVWA, not recreating the MOVEit exploit.*
+*Note: This repository contains reconstructed technical documentation and evidence from an isolated lab environment. The threat model was theoretically based on the 2023 MOVEit Transfer breach case study, but this lab specifically demonstrates fundamental security concepts against DVWA, not the actual MOVEit exploit.*
 
 ## Lab Architecture
 
@@ -72,20 +65,17 @@ The project follows a structured lifecycle from initial compromise to remediatio
 
 ## Attack Simulation Overview
 
-To generate detectable traffic and forensic artifacts, a controlled attack simulation was conducted against the DVWA endpoint. This phase involved:
-- Manual SQL injection testing to identify vulnerabilities.
-- Vulnerability validation and exploitation using `sqlmap`.
-- Database enumeration to map backend structures.
-- Controlled extraction of DVWA dummy records to simulate data exfiltration.
+To generate detectable traffic and forensic artifacts, a controlled attack simulation was conducted against the DVWA endpoint.
 
 ![SQL Injection Test](screenshots/02-sqli-test.png)
-*Manual execution of a SQL injection payload against the DVWA target, extracting dummy user records to simulate a data breach.*
+*Manual execution of a SQL injection payload against the DVWA target, demonstrating controlled database record extraction.*
 
 ## Detection Engineering
 
-A critical component of the lab was configuring defensive mechanisms to identify the simulated attacks. This involved deploying Suricata IDS and developing a custom detection rule designed to trigger on SQL injection indicators within HTTP traffic destined for the vulnerable DVWA endpoint. 
+A critical component of the lab was configuring defensive mechanisms to identify the simulated attacks. This involved deploying Suricata IDS and engineering a custom detection rule designed to trigger on SQL injection indicators within HTTP traffic destined for the vulnerable DVWA endpoint. 
 
-*(Note: The original Suricata rule file is no longer available as a raw text artifact, but its exact syntax has been successfully recovered from the original lab evidence.)*
+**Recovered lab detection rule:** [`detection-rules/suricata/local.rules`](detection-rules/suricata/local.rules)
+*(Note: The original Suricata rule file is no longer available as a raw text artifact; the exact syntax was recovered directly from the original lab screenshot evidence.)*
 
 ![Suricata Rule](screenshots/05-suricata-rule.png)
 *Custom Suricata IDS rule developed to detect SQL injection indicators targeting the vulnerable DVWA endpoint.*
@@ -104,13 +94,7 @@ Following the attack simulation, network traffic and server logs were analyzed t
 
 ## Digital Forensics
 
-Evidence from multiple sources was consolidated and investigated using digital forensics principles, supported by tools such as Autopsy. The investigation correlated key indicators to build a timeline of the attack, including:
-- Source (Attacker) IP addresses
-- Destination (Victim) IP addresses
-- Requested HTTP endpoints and URIs
-- HTTP activity (GET/POST methods, status codes)
-- SQL injection indicators in parameters
-- Timestamps (where available across logs and network captures)
+Evidence from multiple sources was consolidated and investigated in Autopsy. The multi-source technical investigation correlated key indicators across network captures and server logs to build a timeline of the simulated compromise scenario.
 
 ![Autopsy Analysis](screenshots/09-autopsy-analysis.png)
 *Digital forensic investigation in Autopsy, correlating Apache access logs to identify HTTP requests containing SQL injection indicators.*
@@ -133,23 +117,24 @@ The lab and associated research involved mapping adversary behaviors to the MITR
 - Exploitation of a web application vulnerability (SQL Injection).
 - Automated database enumeration and data extraction.
 
-## Incident Response
+## Incident Response Planning
 
-Based on the forensic findings and aligned with NIST incident response concepts, a response workflow was developed to address the simulated compromise:
+Based on the forensic findings and aligned with NIST incident response concepts, a proposed response workflow was planned to address the simulated scenario:
 
 ![Incident Response Workflow](screenshots/11-incident-response.png)
-*Overview of the incident response playbook developed to address the simulated web application compromise based on NIST guidelines.*
+*Overview of the incident response playbook developed to address the simulated web application scenario based on NIST guidelines.*
 
-1. **Detection:** Identifying the attack via IDS alerts and log anomalies.
-2. **Validation:** Confirming the SQL injection was successful and not a false positive.
+The planned playbook covers the following phases:
+1. **Detection:** Identifying anomalous activity via IDS alerts and log entries.
+2. **Validation:** Confirming the observed request matched the simulated SQL injection activity.
 3. **Evidence Preservation:** Securing logs and packet captures for analysis.
-4. **Exposure Assessment:** Determining what database records were accessed.
-5. **Containment:** Blocking the attacker's IP and taking the vulnerable application offline.
-6. **Remediation:** Patching the SQL injection vulnerability in the application code.
-7. **Credential Review/Reset:** Invalidating potentially compromised sessions or credentials.
-8. **Recovery:** Restoring the application to normal operations.
-9. **Monitoring:** Implementing enhanced detection rules to prevent recurrence.
-10. **Lessons Learned:** Updating security policies and training based on the incident.
+4. **Exposure Assessment:** Assessing which database records may have been exposed or accessed.
+5. **Containment:** Proposing actions to block the attacker's IP and restrict the vulnerable endpoint.
+6. **Remediation:** Identifying application patching requirements to address the SQL injection flaw.
+7. **Credential Review:** Recommending resets for any potentially exposed sessions or credentials.
+8. **Recovery:** Defining steps to restore the application to normal operations.
+9. **Monitoring:** Implementing enhanced detection rules to monitor the vulnerable endpoint.
+10. **Lessons Learned:** Conducting a post-incident review to evaluate detection and response procedures.
 
 ## Documentation
 

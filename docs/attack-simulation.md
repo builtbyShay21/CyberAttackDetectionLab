@@ -4,14 +4,14 @@ The attack simulation phase focused on generating observable, realistic exploita
 
 ## Activity Summary
 
-The simulation demonstrated a web application compromise workflow against the intentionally vulnerable DVWA target. The verified activities included:
+The simulation demonstrated a controlled attack workflow against the intentionally vulnerable DVWA target. The verified activities included:
 
 1. **Connectivity Verification:** Establishing and confirming network communication between the Kali Linux attacker system and the Metasploitable 2 target.
 2. **Target Identification:** Interacting with DVWA as the designated vulnerable web application.
 3. **Manual Vulnerability Discovery:** Demonstrating SQL injection behavior manually against the vulnerable application endpoint.
 
 ![SQL Injection Test](../screenshots/02-sqli-test.png)
-*Manual execution of a SQL injection payload against the DVWA target, extracting dummy user records to simulate a data breach.*
+*Manual execution of a SQL injection payload against the DVWA target, demonstrating controlled database record extraction.*
 
 4. **Automated Validation:** Utilizing `sqlmap` to validate the extent of the SQL injection vulnerability.
 
@@ -23,7 +23,7 @@ The simulation demonstrated a web application compromise workflow against the in
 ![Database Enumeration](../screenshots/04-database-enumeration.png)
 *Database enumeration demonstrating the controlled extraction of backend schema and table names.*
 
-6. **Data Extraction:** Demonstrating the controlled extraction of DVWA dummy user records to simulate data exfiltration.
+6. **Data Extraction:** Demonstrating the controlled extraction of DVWA dummy user records to represent the data-access phase of a compromise.
 
 ## Objective and Relevance
 

@@ -2,7 +2,7 @@
 
 ## Investigation Objective
 
-The objective of the forensic investigation was to analyze and correlate the technical evidence generated during the attack simulation to reconstruct the timeline, scope, and impact of the incident.
+The objective of the forensic investigation was to analyze and correlate the technical evidence generated during the attack simulation to reconstruct the timeline, scope, and impact of the simulated scenario.
 
 ## Network Evidence - Wireshark
 
@@ -14,14 +14,14 @@ The Apache HTTP access logs were extracted and examined. These server-side logs 
 
 ## Forensic Examination - Autopsy
 
-Autopsy was employed as part of the digital forensic investigation process. It provided a centralized platform to ingest, inspect, and correlate the available evidence, facilitating a structured review of the artifacts associated with the simulated compromise.
+Autopsy was employed as part of the digital forensic investigation process. It provided a centralized platform to ingest, inspect, and correlate the available evidence, facilitating a structured review of the artifacts associated with the simulated scenario.
 
 ![Autopsy Analysis](../screenshots/09-autopsy-analysis.png)
 *Digital forensic investigation in Autopsy, correlating Apache access logs to identify HTTP requests containing SQL injection indicators.*
 
 ## Evidence Correlation
 
-A key component of the investigation was the correlation of disparate evidence sources to form a cohesive understanding of the incident. The investigation successfully correlated indicators such as the attacker/source IP, target/destination IP, requested web endpoints, specific HTTP activity, SQL injection indicators, and available timestamps.
+A key component of the investigation was the correlation of disparate evidence sources to form a cohesive understanding of the observed SQL injection activity. The investigation successfully correlated indicators such as the attacker/source IP, target/destination IP, requested web endpoints, specific HTTP activity, SQL injection indicators, and available timestamps.
 
 ```text
 Suricata Alert
