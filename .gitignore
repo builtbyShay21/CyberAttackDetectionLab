@@ -1,0 +1,50 @@
+# Virtual Machine Files
+*.vmdk
+*.vdi
+*.ova
+*.ovf
+*.vmx
+
+# Packet Captures (Unless intentionally sanitized and tracked)
+*.pcap
+*.pcapng
+*.cap
+
+# Logs
+*.log
+*.sqlite
+*.db
+
+# Forensic Images & Memory Dumps
+*.E01
+*.raw
+*.dd
+*.img
+*.mem
+*.dmp
+*.vmem
+
+# Credentials and Secrets
+*.pem
+*.key
+*.cert
+*.cer
+secrets.txt
+credentials.txt
+.env
+*.env
+
+# IDE and OS Metadata
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak

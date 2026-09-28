@@ -1,0 +1,1 @@
+alert tcp 192.168.65.128 any -> 192.168.65.129 80 (msg:"DVWA SQL Injection Payload Detected"; content:"/dvwa/vulnerabilities/sqli/"; nocase; content:"%27"; nocase; content:"OR"; nocase; content:"%23"; nocase; sid:1000002; rev:1;)
